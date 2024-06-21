@@ -31,7 +31,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies (Linux)
         if: matrix.platform == 'linux'
@@ -40,14 +40,14 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: Install dependencies
         shell: bash
         run: npm ci --no-audit --no-fund
 
       - name: Rebuild native modules
-        run: "npm run rebuild -- -a ${{ matrix.arch }}"
+        run: npm run rebuild -- -a ${{ matrix.arch }}
 
       - name: Upload native module binary
         uses: actions/upload-artifact@v4
